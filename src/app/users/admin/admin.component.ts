@@ -55,6 +55,7 @@ export class AdminComponent implements OnInit {
     private formbuilder: FormBuilder,
     private productService: ProductService,
     private fileUploadService: FileUploadService) { }
+
     ngOnInit(): void {
       //for the modal input type form value
       this.formValue = this.formbuilder.group({
@@ -104,7 +105,7 @@ export class AdminComponent implements OnInit {
     this.toggleDiscountTable=false;
 
     // if(this.toggleDiscountTable==false){
-     
+
     //    this.toggleProductTable=true;
     //    this.toggleDiscountTable=false;
     //   this.ngOnInit();
@@ -160,7 +161,7 @@ export class AdminComponent implements OnInit {
     })
 
   }
-  
+
   // to add Product
   addProducts() {
     this.newProduct.productSku = this.formValueProduct.value.product_sku;
@@ -192,7 +193,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  //As per Poon no direct code to be used for refreshing the S.P.A. 
+  //As per Poon no direct code to be used for refreshing the S.P.A.
   // reloadPage(): void {
   //   window.location.reload();
   // }
@@ -226,12 +227,12 @@ export class AdminComponent implements OnInit {
     this.productObject.productQty = this.formValue.value.product_qty;
     //To Prevent image being lost on update.
     //We use the same Store Image variable above, check if product image is empty
-    // if Yes assign storeImgUrl to it. 
+    // if Yes assign storeImgUrl to it.
     if(this.productObject.imageUrl == '' ){
       // check if image url is updated or not
       this.productObject.imageUrl = this.storeImgUrl;
     }
-    
+
     console.log(this.formValue.value.image_url);
     //add more later if needed
     if(this.productObject.productCost > 0 && this.productObject.productQty > 0){
