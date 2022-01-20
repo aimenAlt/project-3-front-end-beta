@@ -50,7 +50,7 @@
                 </div>
                 <span class="out-of-stock" *ngIf="productAndDiscount.productQty < 1">This item is out of stock</span>
 
-                <button class="btn btn-danger" (click)="goToCheckout()">Go to cart</button>
+                <button class="btn btn-danger" (click)="goToCheckout()">Go to cart</button><br><br>
                 <h4 class="item-details ">Available: {{productAndDiscount.productQty}}</h4>
 
               </div>
@@ -59,10 +59,12 @@
         </div> <!-- row.// -->
       </div> <!-- card-body.// -->
     </article>
+    
+    <h2 class="m-5">Submit Review</h2>
     <article class="card mt-5">
       <div class="card-body">
         <div class="container">
-          <form action="action_page.php" *ngIf="!checkIfUserExistsInReviews()">
+          <form  (ngSubmit)="postReview()">
 
             <label for="title">Review Title </label>
             <input type="text" id="title" name="title" placeholder="Review Title:" [(ngModel)]="reviewForm.title">
@@ -81,7 +83,7 @@
                       placeholder="Write your review here"
                       style="height:200px" [(ngModel)]="reviewForm.review"></textarea>
 
-            <input type="submit" value="Submit" (click)="postReview()">
+            <input type="submit" value="Submit">
 
           </form>
         </div>
@@ -162,8 +164,8 @@
                     <div >
                       <p class="text-left">
                         <span class="text-muted">{{review.rating}}</span>
-                        <span *ngFor="let n of Rating(review.rating)" class="fa fa-star star-active "></span>
-                        <span *ngFor="let n of negativeRating(review.rating)" class="fa fa-star star-inactive "></span>
+                        <span *ngFor="let n of Rating(review.rating)" class="material-icons">grade</span>
+                        <span *ngFor="let n of negativeRating(review.rating)" class="material-icons">grade</span>
                       </p>
                     </div>
                   </div>

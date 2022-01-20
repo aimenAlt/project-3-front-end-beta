@@ -143,7 +143,6 @@ export class AdminComponent implements OnInit {
       },
       (error: any) => {
         this.errorProductMsg = "Unable to get allProducts - Try later";
-        console.log(this.errorProductMsg);
       }
     )
   }
@@ -156,7 +155,6 @@ export class AdminComponent implements OnInit {
 
       },
       error: (err: any) => {
-        console.log(err);
       }
     })
 
@@ -178,7 +176,6 @@ export class AdminComponent implements OnInit {
         this.loadProducts();
       },
       (error: any) => {
-        console.log(error);
       })
 
     this.ngOnInit();
@@ -232,8 +229,7 @@ export class AdminComponent implements OnInit {
       // check if image url is updated or not
       this.productObject.imageUrl = this.storeImgUrl;
     }
-
-    console.log(this.formValue.value.image_url);
+    
     //add more later if needed
     if(this.productObject.productCost > 0 && this.productObject.productQty > 0){
     this.productService.updateProductsService(this.productObject).subscribe(
@@ -261,7 +257,6 @@ export class AdminComponent implements OnInit {
         (Response: any) => {
           this.loadProducts();
         },
-        (error: any) => console.log(error)
       )
     }
   }
@@ -299,11 +294,9 @@ export class AdminComponent implements OnInit {
       (response: ProductAndDiscount[]) => {
         this.allDiscountProducts = response;
         this.loadProducts();
-        console.log(response);
       },
       (error: any) => {
         this.errorProductMsg = "Unable to get allDiscountProducts - Try later";
-        console.log(this.errorProductMsg);
       }
     )
   }
@@ -324,7 +317,6 @@ export class AdminComponent implements OnInit {
         this.loadProducts();
       },
       (error: any) => {
-        console.log(error);
       })
     alert("Discounted was added successfully");
     //Close the Form Automatically
@@ -372,7 +364,6 @@ export class AdminComponent implements OnInit {
           this.loadDiscountProducts();
           this.loadProducts();
         },
-        (error: any) => console.log(error)
       )
     }
   }
@@ -386,14 +377,12 @@ export class AdminComponent implements OnInit {
           this.loadDiscountProducts();
           this.loadProducts();
         },
-        (error: any) => console.log(error)
       )
       this.productService.deleteProductsService(this.deleteProductId).subscribe(
         (Response: any) => {
           this.loadDiscountProducts();
           this.loadProducts();
         },
-        (error: any) => console.log(error)
       )
     }
   }
@@ -402,7 +391,6 @@ export class AdminComponent implements OnInit {
   onDiscountEditRow(row: any) {
     this.discountObject.discountId = row.discountId;
     this.discountObject.productId = row.productId;
-    console.log(this.discountObject.productId);
     //The input Text fields to change values for
     //To add discounts
     this.formValueDiscount.controls["discount_percentage"].setValue(row.discountPercentage);

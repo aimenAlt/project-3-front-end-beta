@@ -198,6 +198,11 @@ describe('CheckoutComponent', () => {
         cartQty: 4
       }
 
+    it('should update expected item(s)', () => {
+      cartItemService.addNewItemService(addedItem).subscribe(
+        item => expect(item).toEqual(addedItem,'should  add cart item'),
+        fail
+      );
 
     });
 
@@ -215,7 +220,6 @@ describe('CheckoutComponent', () => {
 
   });
 });
-
 
 
 
